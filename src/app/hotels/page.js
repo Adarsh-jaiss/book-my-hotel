@@ -27,6 +27,7 @@ const HotelsPage = () => {
                         'X-Api-Token': `Bearer ${Token}`,
                     },
                 });
+                
                 const data = await response.json();
                 setHotels(data);
             } catch (error) {

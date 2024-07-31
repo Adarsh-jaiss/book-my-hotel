@@ -35,7 +35,7 @@ function SignUpForm() {
                 },
                 body: JSON.stringify(userData),
             });
-        
+
             if (res.ok) {
                 alert("Account created successfully");
             } else {
@@ -128,10 +128,11 @@ function SignUpForm() {
 
                     <div className="flex items-center justify-between mt-2">
                         <button
-                            className="bg-gray-900 hover:bg-gray-950 text-white font-bold py-2 px-32 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-950 focus:shadow-outline"
-                            type="submit" onClick={handleSubmit}
+                            type='submit'
+                            onClick={handleSubmit}
+                            className='w-full flex justify-center py-2 px-4 border border-transparent rounded-xl shadow-sm text-sm font-medium text-white bg-gray-900 hover:bg-gray-950 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-950'
                         >
-                            SignUp
+                            Sign in
                         </button>
                     </div>
                 </form>

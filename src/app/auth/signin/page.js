@@ -24,11 +24,10 @@ function SignInForm() {
     };
 
     try {
-      const res = await fetch("http://localhost:8000/api/auth/signin", {
+      const res = await fetch("https://go-hotel-reservation-production.up.railway.app/api/auth/signin", {
         method: "POST",
         "headers": {
           "content-type": "application/json",
-          // "X-Api-Token": ""
         },
         body: JSON.stringify(userData)
       });
