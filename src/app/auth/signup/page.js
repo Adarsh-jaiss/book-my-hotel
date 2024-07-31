@@ -5,11 +5,11 @@ import next from 'next'
 
 export default function Signup() {
     return (
-        <CreateAccountForm />
+        <SignUpForm />
     )
 }
 
-function CreateAccountForm() {
+function SignUpForm() {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
@@ -72,6 +72,7 @@ function CreateAccountForm() {
                             onChange={(e) => setFirstName(e.target.value)}
                             className="shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             placeholder="First name"
+                            required
                         />
                     </div>
 
@@ -87,6 +88,7 @@ function CreateAccountForm() {
                             onChange={(e) => setLastName(e.target.value)}
                             className="shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             placeholder="Last name"
+                            required
                         />
                     </div>
 
@@ -103,6 +105,7 @@ function CreateAccountForm() {
                             onChange={(e) => setEmail(e.target.value)}
                             className="shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             placeholder="Email address"
+                            required
                         />
                     </div>
 
@@ -117,14 +120,15 @@ function CreateAccountForm() {
                             name="password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
-                            className="shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            className="font-medium shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             placeholder="Password"
+                            required
                         />
                     </div>
 
                     <div className="flex items-center justify-between mt-2">
                         <button
-                            className="bg-gray-900 hover:bg-gray-950 text-white font-bold py-2 px-32 rounded-xl focus:outline-none focus:shadow-outline"
+                            className="bg-gray-900 hover:bg-gray-950 text-white font-bold py-2 px-32 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-950 focus:shadow-outline"
                             type="submit" onClick={handleSubmit}
                         >
                             SignUp
