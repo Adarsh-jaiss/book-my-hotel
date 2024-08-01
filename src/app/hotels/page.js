@@ -24,7 +24,7 @@ const HotelsPage = () => {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
-                        'X-Api-Token': `Bearer ${Token}`,
+                        'X-Api-Token': `${Token}`,
                     },
                 });
 
@@ -53,7 +53,7 @@ const HotelsPage = () => {
 
 const HotelCard = ({ hotel }) => {
     return (
-        <a href={`/hotels/${hotel.id}`} className="block text-black no-underline">
+        <a href={`/hotels/${hotel.id}/rooms`} className="block text-black no-underline">
             <div className="border border-gray-300 rounded-lg overflow-hidden shadow-lg">
                 <img src="hotel-image-placeholder.jpg" alt={hotel.name} className="w-full h-48 object-cover" />
                 <div className="p-4 border border-solid ">
