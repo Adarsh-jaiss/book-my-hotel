@@ -3,12 +3,6 @@ import next from 'next'
 import React, { useState } from 'react'
 
 export default function Signin() {
-  return (
-    < SignInForm />
-  )
-}
-
-function SignInForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [token, setToken] = useState('');
@@ -24,7 +18,7 @@ function SignInForm() {
     };
 
     try {
-      const res = await fetch("https://go-hotel-reservation-production.up.railway.app/api/auth/signin", {
+      const res = await fetch("http://localhost:8000/api/auth/signin", {
         method: "POST",
         "headers": {
           "content-type": "application/json",
@@ -33,29 +27,33 @@ function SignInForm() {
       });
 
       if (res.ok) {
-        alert("Sign in successful");
+
         // set header X-Api-Token to res.token
         const data = await res.json();
         console.log(data);
-        const token = data.token;
+        const tokenf = data.token;
         const id = data.user.id;
-        setToken(token);
-        
+        setToken(tokenf);
+
         if (!id) {
           throw new Error('User ID is undefined');
         }
 
-        console.log("Token before request:", token);
+        const header = {
+          'Content-Type': 'application/json',
+          'X-Api-Token': tokenf,
+        };
+
+        console.log("header:", header);
+        console.log("Token before request:", tokenf);
+
 
         try {
           const subsequentRes = await fetch(`http://localhost:8000/api/auth/user/${id}`, {
             method: 'GET',
-            headers: {
-              'Content-Type': 'application/json',
-              'X-Api-Token': token,
-            },
+            headers: header
           });
-          console.log("token found:", token);
+          // console.log("token found:", token);
 
           // Handle the response from the subsequent request
           const subsequentData = await subsequentRes.json();
@@ -64,6 +62,8 @@ function SignInForm() {
           localStorage.setItem('token', data.token); // Store the token in local storage
 
           // Navigate to the hotels page after the subsequent request is successful
+
+          alert("Sign in successful");
           next.router.push('/hotels');
         } catch (error) {
           console.error('Error in subsequent request:', error);
@@ -128,4 +128,5 @@ function SignInForm() {
     </div>
   )
 }
+
 
